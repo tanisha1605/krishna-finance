@@ -1,0 +1,109 @@
+@reference "../../app/globals.css";
+
+.heroWrapper {
+  @apply relative min-h-screen flex items-center;
+  /* pt-20 matches your header height (h-20) to prevent content from hiding behind it */
+  padding-top: 5rem; 
+  background-image: url('https://img.freepik.com/free-vector/inr-currency-rise-up-banner-with-grow-up-arrow-sign_1017-60859.jpg?ga=GA1.1.2107607071.1767675778&semt=ais_hybrid&w=740&q=80'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  background-color: #12161d;
+}
+
+.heroOverlay {
+  @apply absolute inset-0;
+  /* Dark gradient from left to right to make text pop against the image */
+  background: linear-gradient(90deg, rgba(18, 22, 29, 0.9) 0%, rgba(18, 22, 29, 0.4) 100%);
+  z-index: 1;
+}
+
+.contentBox {
+  @apply relative max-w-2xl;
+  z-index: 10;
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.subHeading {
+  @apply font-bold tracking-[0.3em] text-sm mb-4 uppercase;
+  color: #5ea000; /* Your brand green */
+}
+
+.mainTitle {
+  @apply text-white text-5xl md:text-7xl font-bold leading-tight mb-6;
+  
+  span {
+    @apply block;
+  }
+}
+
+.description {
+  @apply text-gray-300 text-lg mb-10 max-w-lg leading-relaxed;
+}
+
+.buttonGroup {
+  @apply flex flex-wrap gap-5;
+}
+
+.primaryBtn {
+  @apply px-10 py-4 bg-[#5ea000] text-white font-bold text-sm tracking-widest transition-all duration-300 uppercase;
+  border: 1px solid #5ea000;
+
+  &:hover {
+    @apply bg-transparent scale-105;
+    color: #5ea000;
+  }
+}
+
+.secondaryBtn {
+  @apply px-10 py-4 border border-white/30 text-white font-bold text-sm tracking-widest transition-all duration-300 uppercase;
+  background-color: transparent;
+
+  &:hover {
+    @apply bg-white text-black border-white;
+  }
+}
+
+.sliderDots {
+  @apply absolute bottom-12 left-1/2 -translate-x-1/2 flex items-center space-x-3;
+  z-index: 20;
+  
+  .dot, .dotActive {
+    @apply w-2 h-2 rounded-full transition-all duration-300;
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+  
+  .dotActive {
+    @apply w-10;
+    background-color: #5ea000;
+  }
+}
+
+/* Smooth Fade In Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+  .mainTitle {
+    @apply text-4xl;
+  }
+  
+  .buttonGroup {
+    @apply flex-col;
+    
+    button {
+      @apply w-full;
+    }
+  }
+}
+
