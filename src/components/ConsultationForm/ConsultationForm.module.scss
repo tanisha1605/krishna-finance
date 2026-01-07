@@ -1,0 +1,122 @@
+@reference "../../app/globals.css";
+
+$primary-green: #2ea000;
+
+.consultSection {
+  @apply py-16 md:py-24 bg-white overflow-hidden;
+}
+
+.wrapper {
+  @apply grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center;
+}
+
+.visualSide {
+  @apply flex justify-center items-center;
+
+  .imageContainer {
+    @apply w-full max-w-[550px];
+
+    .mainImage {
+      @apply w-full h-auto object-contain;
+    }
+  }
+}
+
+.formSide {
+  @apply bg-[#f9fafb] p-7 md:p-12 rounded-[2rem] shadow-sm border border-gray-100;
+
+  .formHeader {
+    @apply mb-8;
+
+    .badge {
+      @apply flex items-center gap-2 text-xs font-bold tracking-[0.15em] text-gray-400 uppercase mb-3;
+      
+      .checkIcon {
+        color: $primary-green;
+        @apply text-sm;
+      }
+    }
+
+    .formTitle {
+      @apply text-3xl md:text-5xl font-extrabold text-[#1a1e26] leading-tight;
+      
+      span {
+        color: $primary-green;
+      }
+    }
+  }
+}
+
+.form {
+  @apply space-y-4;
+
+  .inputGroup {
+    input, select {
+      @apply w-full px-6 py-4 bg-white border border-gray-200 rounded-xl outline-none transition-all duration-300;
+      @apply text-gray-700 font-medium placeholder:text-gray-400;
+
+      &:focus {
+        @apply border-[#2ea000]/50;
+        box-shadow: 0 0 0 4px rgba($primary-green, 0.08);
+      }
+    }
+
+    select {
+      @apply appearance-none cursor-pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%232ea000'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1.5rem center;
+      background-size: 1.1em;
+    }
+  }
+
+  .submitBtn {
+    @apply mt-6 flex items-center justify-center gap-2 w-full sm:w-max px-12 py-4 text-white font-bold rounded-full transition-all duration-300;
+    background-color: $primary-green;
+
+    &:hover {
+      @apply shadow-xl shadow-[#2ea000]/25 -translate-y-1;
+      filter: brightness(1.05);
+    }
+    
+    svg {
+      @apply text-xl;
+    }
+  }
+}
+
+/* Tablet & Mobile Responsiveness */
+@media (max-width: 1023px) {
+  .consultSection {
+    @apply py-12;
+  }
+
+  .wrapper {
+    @apply gap-14;
+  }
+
+  .visualSide {
+    @apply order-1; // Image stays on top for mobile/tablet
+    .imageContainer {
+      @apply max-w-[400px];
+    }
+  }
+
+  .formSide {
+    @apply order-2;
+  }
+}
+
+@media (max-width: 640px) {
+  .formSide {
+    @apply p-6 rounded-3xl;
+  }
+
+  .formTitle {
+    @apply text-3xl;
+  }
+
+  .submitBtn {
+    @apply w-full; // Button becomes full width on small phones
+  }
+}

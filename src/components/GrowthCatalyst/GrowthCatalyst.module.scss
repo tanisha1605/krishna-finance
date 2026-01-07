@@ -1,0 +1,148 @@
+$primary-green: #2ea000;
+$text-dark: #111827;
+$text-light: #4b5563;
+
+.mainWrapper {
+  padding: 80px 5%;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  overflow: visible; // Prevents clipping during hover animations
+}
+
+.contentContainer {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column; 
+  gap: 40px;
+
+  @media (min-width: 1024px) {
+    flex-direction: row; 
+    align-items: flex-start;
+  }
+}
+
+.introSide {
+  flex: 1;
+  @media (min-width: 1024px) {
+    position: sticky;
+    top: 100px;
+  }
+
+  .tagline {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 15px;
+
+    .iconCheck {
+      background-color: $primary-green;
+      color: white;
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+    }
+  }
+
+  .mainTitle {
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.1;
+    font-weight: 800;
+    margin-bottom: 25px;
+    color: $text-dark;
+
+    .accentText {
+      color: $primary-green;
+      display: block;
+    }
+  }
+
+  .ctaButton {
+    background-color: $primary-green;
+    color: white;
+    padding: 14px 30px;
+    border-radius: 50px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 10px 15px rgba($primary-green, 0.2);
+  }
+}
+
+.servicesGrid {
+  flex: 1.7;
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  background: #fff;
+  height: auto; // Crucial: Fixes cutoff at the bottom row
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .serviceBox {
+    padding: 40px 30px;
+    border: 0.5px solid #f3f4f6;
+    display: flex;
+    flex-direction: column; 
+    min-height: 280px; // Ensures uniform height and space for link
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    .cardContent {
+      flex-grow: 1; // Pushes the viewDetails link to the bottom
+
+      .iconContainer {
+        background-color: $primary-green;
+        width: 45px;
+        height: 45px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        font-size: 20px;
+        color: #fff;
+        box-shadow: 0 4px 8px rgba($primary-green, 0.15);
+      }
+
+      .serviceName {
+        font-size: 18px;
+        font-weight: 800;
+        margin-bottom: 12px;
+        color: $text-dark;
+      }
+
+      .serviceDesc {
+        font-size: 14px;
+        line-height: 1.6;
+        color: $text-light;
+        margin-bottom: 25px;
+      }
+    }
+
+    .viewDetails {
+      margin-top: auto; // Force alignment to absolute bottom of the card
+      font-size: 14px;
+      font-weight: 700;
+      color: $primary-green;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: gap 0.2s ease;
+
+      &:hover {
+        gap: 10px;
+      }
+    }
+  }
+}

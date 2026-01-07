@@ -1,0 +1,89 @@
+@reference "../../app/globals.css";
+
+.sectionWrapper {
+  @apply bg-[#0b0e14] py-16 md:py-24 px-4 overflow-hidden min-h-screen;
+}
+
+.container {
+  @apply max-w-7xl mx-auto;
+}
+
+.headerArea {
+  @apply mb-12;
+  .badgeLine {
+    @apply flex items-center gap-3 mb-4;
+    .checkIcon { @apply bg-[#2ea000] text-white rounded-full w-5 h-5 flex items-center justify-center text-[10px]; }
+    .badgeText { @apply text-gray-400 font-bold uppercase tracking-widest text-xs; }
+  }
+  .mainTitle {
+    @apply text-3xl md:text-5xl font-black text-white;
+    span { @apply text-[#2ea000]; }
+  }
+}
+
+.cardsGrid {
+  /* Responsive: 1 col on mobile, 2 on tablet, 3 on desktop */
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8;
+}
+
+.card {
+  @apply bg-[#12161d] rounded-2xl overflow-hidden flex flex-col cursor-pointer transition-all duration-300;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  &:hover {
+    border-color: #2ea000;
+    @apply shadow-2xl shadow-[#2ea000]/10;
+    transform: translateY(-8px);
+  }
+
+  .cardHeader {
+    @apply flex justify-between items-center bg-[#1a1f26] px-5 py-4;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    .cardTitleGroup {
+      @apply flex items-center gap-3 text-white font-extrabold text-lg;
+      .iconBox { @apply text-[#2ea000] text-xl; }
+    }
+    .amountBadge { @apply bg-[#2ea000] text-white px-3 py-1.5 rounded-lg font-black text-xs; }
+  }
+
+  .cardBody {
+    @apply p-6 flex-grow;
+    ul { @apply space-y-4; li { @apply flex items-start gap-3; .pointer { @apply text-xl; } p { @apply text-gray-400 text-sm leading-relaxed; } } }
+  }
+}
+
+/* MODAL STYLES */
+.modalOverlay { @apply fixed inset-0 bg-black/80 backdrop-blur-sm z-[1100]; }
+.modalContainer { @apply fixed inset-0 flex items-center justify-center z-[1200] p-4; }
+
+.modalContent {
+  @apply bg-white w-full max-w-[500px] rounded-[32px] p-8 md:p-12 relative shadow-2xl;
+  
+  .closeBtn { @apply absolute top-6 right-6 text-2xl text-gray-900 hover:rotate-90 transition-transform; }
+
+  .modalHeader {
+    @apply mb-8;
+    .badgeLine {
+        @apply flex items-center gap-2 mb-2;
+        .checkIcon { @apply text-[#2ea000] text-xl; }
+        span { @apply text-gray-900 font-bold text-xs tracking-widest uppercase; }
+    }
+    h2 { @apply text-3xl md:text-4xl font-black text-gray-900; span { @apply text-[#2ea000]; } }
+  }
+
+  .form {
+    @apply flex flex-col gap-4;
+    input, select {
+        @apply w-full h-14 px-6 rounded-2xl bg-gray-50 border border-gray-100 text-gray-700 outline-none transition-all;
+        &:focus { @apply border-[#2ea000] bg-white ring-4 ring-[#2ea000]/10; }
+    }
+    .submitBtn {
+        @apply mt-4 h-14 bg-[#2ea000] text-white rounded-full font-bold text-lg flex items-center justify-center gap-3 w-fit px-10 transition-all;
+        @apply shadow-lg shadow-[#2ea000]/30 hover:scale-105 active:scale-95;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+    .modalContent { @apply p-6; .submitBtn { @apply w-full; } h2 { @apply text-2xl; } }
+}

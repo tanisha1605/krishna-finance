@@ -1,0 +1,133 @@
+$primary-green: #2ea000;
+$text-main: #000000;
+$text-secondary: #6b7280;
+
+.sectionWrapper {
+  padding: 60px 20px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column; // Mobile default: Stacked
+    align-items: center;
+    gap: 40px;
+
+    @media (min-width: 1024px) {
+      flex-direction: row; // Desktop: Side-by-side
+      justify-content: space-between;
+      gap: 60px;
+    }
+  }
+}
+
+.imageSide {
+  flex: 1;
+  width: 100%;
+  max-width: 500px;
+
+  .puzzleImage {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.05));
+  }
+}
+
+.contentSide {
+  flex: 1.2;
+  width: 100%;
+
+  .topNote {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 16px;
+
+    .checkIcon {
+      background-color: $primary-green;
+      color: white;
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+    }
+  }
+
+  .headline {
+    font-size: 28px;
+    line-height: 1.2;
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: $text-main;
+
+    @media (min-width: 768px) {
+      font-size: 44px; // Tablet and Desktop Heading
+    }
+
+    .highlight {
+      color: $primary-green;
+    }
+  }
+
+  .subtext {
+    color: $text-secondary;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr; // Mobile
+  gap: 16px;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr); // Tablet & Desktop
+    gap: 24px;
+  }
+
+  .card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: border-color 0.2s ease;
+
+    &:hover {
+      border-color: rgba($primary-green, 0.2);
+    }
+
+    .iconBox {
+      background-color: $primary-green;
+      min-width: 50px;
+      height: 50px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 20px;
+      box-shadow: 0 4px 10px rgba($primary-green, 0.2);
+    }
+
+    .cardTitle {
+      font-size: 14px;
+      font-weight: 600;
+      color: $text-main;
+      line-height: 1.4;
+    }
+  }
+}
