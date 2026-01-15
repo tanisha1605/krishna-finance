@@ -72,7 +72,7 @@ const Footer = () => {
             <motion.h3 variants={textVariants}>Contact</motion.h3>
             <motion.div variants={textVariants} className={styles.iconRow}>
               <FaMapMarkerAlt className={styles.brandIcon} />
-              <p>Unit- 505/506 Skylar Building, Prahlad Nagar, Ahmedabad, Gujarat 380015</p>
+              <p>609 - SHREEJI Business, opposite hanspura residency, Hanspura, GIDC Naroda, Ahmedabad, Gujarat 382330</p>
             </motion.div>
             <div className={styles.emailRow}>
               <motion.h3 variants={textVariants}>Email us</motion.h3>
@@ -88,11 +88,11 @@ const Footer = () => {
             <motion.h3 variants={textVariants}>Talk with our Expert</motion.h3>
             <motion.div variants={textVariants} className={styles.iconRow}>
               <FaPhoneAlt className={styles.brandIcon} />
-              <p>+91 9998006734</p>
+              <p>+91 98240 22350</p>
             </motion.div>
             <motion.div variants={textVariants} className={styles.iconRow}>
               <FaPhoneAlt className={styles.brandIcon} />
-              <p>+91 6358054269</p>
+              <p>+91 99044 03298</p>
             </motion.div>
 
             <div className={styles.timeRow}>
@@ -140,7 +140,7 @@ const Footer = () => {
           variants={itemVariants}
         >
           <motion.p variants={textVariants}>
-            Copyright All Right Reserved ©{currentYear} Developed & Managed By KrishnaFinance
+            © 2025 Krishna Finance, Designed By SEULUXE
           </motion.p>
           <motion.div variants={textVariants} className={styles.legalLinks}>
             <Link href="/terms">Terms & Conditions</Link>

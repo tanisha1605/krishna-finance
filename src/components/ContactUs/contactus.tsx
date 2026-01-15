@@ -22,7 +22,7 @@ const ContactUs = () => {
     {
       icon: <MapPin size={24} />,
       title: "Address",
-      detail: "505/506 Skylar Building, Prahlad Nagar, Ahmedabad, Gujarat 380015",
+      detail: "609 - SHREEJI Business, opposite hanspura residency, Hanspura, GIDC Naroda, Ahmedabad, Gujarat 382330",
       img: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600"
     },
     {
@@ -34,7 +34,7 @@ const ContactUs = () => {
     {
       icon: <Phone size={24} />,
       title: "For Consultation",
-      detail: "+91 99980 06734",
+      detail: "+91 98240 22350",
       img: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600"
     }
   ];
