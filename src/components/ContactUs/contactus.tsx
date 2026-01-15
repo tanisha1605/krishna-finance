@@ -1,13 +1,21 @@
 "use client";
 import React from 'react';
 import styles from './contactus.module.scss';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { MapPin, Mail, Phone } from 'lucide-react';
 
 const ContactUs = () => {
-  const itemVariants = {
+  // 2. Explicitly type the variants object
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
   };
 
   const contactItems = [
@@ -32,44 +40,44 @@ const ContactUs = () => {
   ];
 
   return (
-    <div className={styles.contactPage}>
-      <motion.section 
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className={styles.pageHeader}
-      >
-        <div className="max-w-7xl mx-auto">
-          <h1 className={styles.title}>Contact <span>Us</span></h1>
-          <p className={styles.breadcrumb}>Home / Contact Us</p>
-        </div>
-      </motion.section>
+      <div className={styles.contactPage}>
+        <motion.section
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className={styles.pageHeader}
+        >
+          <div className="max-w-7xl mx-auto">
+            <h1 className={styles.title}>Contact <span>Us</span></h1>
+            <p className={styles.breadcrumb}>Home / Contact Us</p>
+          </div>
+        </motion.section>
 
-      <section className={styles.mainContent}>
-        <div className={styles.contactGrid}>
-          {contactItems.map((item, index) => (
-            <motion.div 
-              key={index}
-              className={styles.contactCard}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={itemVariants}
-            >
-              <div className={styles.imageWrapper}>
-                <img src={item.img} alt={item.title} className={styles.cardImg} />
-                {/* Icon is inside imageWrapper for positioning */}
-                <div className={styles.iconCircle}>{item.icon}</div>
-              </div>
-              
-              <div className={styles.cardContent}>
-                <h3>{item.title}</h3>
-                <p>{item.detail}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-    </div>
+        <section className={styles.mainContent}>
+          <div className={styles.contactGrid}>
+            {contactItems.map((item, index) => (
+                <motion.div
+                    key={index}
+                    className={styles.contactCard}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={itemVariants}
+                >
+                  <div className={styles.imageWrapper}>
+                    <img src={item.img} alt={item.title} className={styles.cardImg} />
+                    <div className={styles.iconCircle}>{item.icon}</div>
+                  </div>
+
+                  <div className={styles.cardContent}>
+                    <h3>{item.title}</h3>
+                    <p>{item.detail}</p>
+                  </div>
+                </motion.div>
+            ))}
+          </div>
+        </section>
+      </div>
   );
 };
 

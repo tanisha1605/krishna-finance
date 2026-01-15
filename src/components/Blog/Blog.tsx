@@ -1,23 +1,29 @@
 "use client";
 import React from 'react';
 import styles from './Blog.module.scss';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion'; // 1. Added Variants import
 
 const Blog = () => {
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.15 }
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2
+      }
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { duration: 0.6, ease: "easeOut" } 
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut" // Now correctly recognized by TypeScript
+      }
     }
   };
 

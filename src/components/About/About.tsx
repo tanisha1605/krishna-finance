@@ -1,21 +1,28 @@
 "use client";
 import React from 'react';
 import styles from './About.module.scss';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 
 const About = () => {
   // Animation Variants
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: { staggerChildren: 0.2, delayChildren: 0.3 }
     }
-  };
+  }
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut" // Now TypeScript knows this is a valid easing string
+      }
+    }
   };
 
   return (

@@ -22,19 +22,19 @@
 }
 
 .megaMenuGrid {
-  // 4 columns on desktop, adapts automatically
+  /* 4 columns on desktop, adapts automatically */
   @apply max-w-[1440px] mx-auto px-8 grid grid-cols-4 gap-8;
 }
 
 .menuColumn {
-  h3 { 
-    @apply text-[#5ea000] font-bold text-xs mb-4 uppercase tracking-widest; 
-    border-bottom: 1px solid rgba(94, 160, 0, 0.2); 
+  h3 {
+    @apply text-[#5ea000] font-bold text-xs mb-4 uppercase tracking-widest;
+    border-bottom: 1px solid rgba(94, 160, 0, 0.2);
     padding-bottom: 8px;
   }
-  ul li a { 
+  ul li a {
     @apply text-gray-400 text-xs py-1.5 block transition-all;
-    &:hover { @apply text-white translate-x-1; } 
+    &:hover { @apply text-white translate-x-1; }
   }
 }
 
@@ -43,11 +43,19 @@
 /* RESPONSIVE SIDEBAR (Tablet & Mobile) */
 .mobileSidebar {
   @apply fixed top-0 right-0 h-screen bg-[#12161d] z-[2000] shadow-2xl;
-  // Responsive Width: 85% on mobile, 50% on tablets
+  /* Default Mobile Width */
   width: 85%;
-  @screen sm { width: 60%; }
-  @screen md { width: 45%; }
   max-width: 450px;
+
+  /* FIXED: Tailwind v4 replacement for @screen sm */
+  @media (width >= theme(--breakpoint-sm)) {
+    width: 60%;
+  }
+
+  /* FIXED: Tailwind v4 replacement for @screen md */
+  @media (width >= theme(--breakpoint-md)) {
+    width: 45%;
+  }
 }
 
 .mobileMainLink {
@@ -69,7 +77,7 @@
   justify-content: center;
   align-items: center;
   border: none;
-  
+
   &:hover {
     background-color: #4a8000;
     @apply shadow-lg;
