@@ -1,0 +1,151 @@
+$primary-green: #2ea000;
+$bg-dark: #0f1115;
+$card-bg: #1e2128;
+$text-dim: #b0b3b8;
+
+.testimonial-section {
+  background-color: $bg-dark;
+  padding: 80px 5%;
+  width: 100%;
+  overflow: hidden; // Prevents anything from leaking out
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+
+  .inner-container {
+    width: 100%;
+    max-width: 1300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+
+    // Responsive Mobile/Tablet Layout
+    @media (max-width: 1024px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 50px;
+    }
+  }
+
+  .text-content {
+    flex: 1;
+    min-width: 300px;
+
+    .badge {
+      font-size: 0.8rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+      .dot { color: $primary-green; margin-right: 5px; font-size: 1.5rem; vertical-align: middle; }
+    }
+
+    .headline {
+      font-size: clamp(2.5rem, 5vw, 4rem); // Fluid typography
+      line-height: 1.1;
+      margin-bottom: 40px;
+      font-weight: 700;
+      .green-text { color: $primary-green; }
+    }
+
+    .cta-btn {
+      background: $primary-green;
+      color: white;
+      border: none;
+      padding: 16px 35px;
+      border-radius: 50px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+    }
+  }
+
+  .card-container {
+    flex: 1.2;
+    width: 100%;
+    max-width: 750px; // Keeps card from getting too wide on desktop
+
+    .testimonial-card {
+      background: $card-bg;
+      border-radius: 24px;
+      padding: clamp(25px, 5vw, 50px);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+
+      .feedback-paragraph {
+        color: $text-dim;
+        font-size: 1.1rem;
+        line-height: 1.7;
+        margin-bottom: 30px;
+        min-height: 120px; // Maintains height consistency
+      }
+
+      .user-row {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 45px;
+
+        .user-avatar {
+          width: 40px;
+          height: 40px;
+          background: #3b82f6;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .user-name { font-weight: 600; font-size: 1.1rem; }
+      }
+    }
+  }
+
+  .card-footer-ratings {
+    display: flex;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 30px;
+    justify-content: space-between;
+    gap: 15px;
+
+    @media (max-width: 600px) {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .rating-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+
+      &.border-line {
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+        padding-left: 15px;
+        @media (max-width: 600px) {
+          border-left: none;
+          padding-left: 0;
+        }
+      }
+
+      .g-logo { font-size: 1.5rem; font-weight: 900; color: #4285F4; }
+      .label { font-size: 0.8rem; display: block; margin-bottom: 4px; }
+      .sub-label { color: $text-dim; font-size: 0.75rem; }
+      .stars { font-weight: 700; display: flex; align-items: center; gap: 4px; }
+      .jd-text { color: #2b7fff; margin-right: 5px; }
+    }
+
+    .hide-mobile {
+      @media (max-width: 768px) { display: none; }
+    }
+  }
+}
+
+// Swiper Dots Correction
+.swiper-pagination {
+  position: relative !important;
+  text-align: left !important;
+  margin-top: -30px;
+  margin-bottom: 20px;
+}
+.swiper-pagination-bullet-active { background: $primary-green !important; }

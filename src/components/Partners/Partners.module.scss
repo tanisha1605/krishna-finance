@@ -1,0 +1,125 @@
+$bg-dark: #0b0d11; 
+$accent-color: #ff6b35; // Change to #2ea000 for green
+
+.partnersSection {
+  background-color: $bg-dark;
+  padding: 80px 0;
+  overflow: hidden;
+  width: 100%;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .title {
+    text-align: center;
+    color: #ffffff;
+    font-size: clamp(2.2rem, 5vw, 2.8rem);
+    font-weight: 700;
+    margin-bottom: 60px;
+    letter-spacing: 1px;
+
+    span {
+      color: $accent-color; 
+    }
+  }
+
+  .slider {
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+
+    // Dark gradient fade for edges
+    &::before,
+    &::after {
+      background: linear-gradient(to right, $bg-dark 0%, rgba(11, 13, 17, 0) 100%);
+      content: "";
+      height: 100%;
+      position: absolute;
+      width: 200px;
+      z-index: 2;
+
+      @media (max-width: 768px) {
+        width: 100px;
+      }
+    }
+
+    &::after {
+      right: 0;
+      top: 0;
+      transform: rotateZ(180deg);
+    }
+
+    &::before {
+      left: 0;
+      top: 0;
+    }
+  }
+
+  .slideTrack {
+    display: flex;
+    align-items: center;
+    // Width: (Slide Width 320px) * (Total 15)
+    width: calc(320px * 15); 
+    animation: scroll 30s linear infinite;
+
+    &:hover {
+      animation-play-state: paused; 
+    }
+  }
+
+  .slide {
+    width: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+
+    @media (max-width: 768px) {
+      width: 220px;
+    }
+  }
+
+  .logoWrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent; // No box
+    border: none; // No box
+
+    .partnerLogo {
+      width: auto;
+      height: auto;
+      max-width: 90%;
+      max-height: 100px; // Larger size
+      object-fit: contain;
+      
+      // If logos are too dark for the dark theme, use brightness(1.2)
+      filter: brightness(1.1); 
+      transition: transform 0.4s ease;
+
+      &:hover {
+        transform: scale(1.15);
+      }
+    }
+  }
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-320px * 5)); } 
+}
+
+@media (max-width: 768px) {
+  .slideTrack {
+    width: calc(220px * 15);
+  }
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-220px * 5)); }
+  }
+}

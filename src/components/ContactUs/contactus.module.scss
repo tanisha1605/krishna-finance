@@ -1,0 +1,65 @@
+@reference "../../app/globals.css";
+
+.contactPage {
+  @apply bg-[#12161d] min-h-screen text-white pt-20 overflow-x-hidden;
+}
+
+.pageHeader {
+  @apply relative py-16 md:py-24 bg-[#1a1e26] text-center overflow-hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+  .title {
+    @apply text-3xl md:text-5xl font-bold mb-4 px-4;
+    span { @apply text-[#2ea000]; }
+  }
+
+  .breadcrumb {
+    @apply text-[#2ea000] font-medium tracking-widest text-xs md:text-sm uppercase;
+  }
+}
+
+.mainContent {
+  @apply py-16 md:py-24;
+}
+
+.contactGrid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 px-4 max-w-7xl mx-auto;
+}
+
+.contactCard {
+  @apply bg-[#ffffff] rounded-2xl overflow-visible shadow-xl transition-all duration-500 flex flex-col;
+  
+  &:hover {
+    @apply -translate-y-3 shadow-2xl;
+  }
+
+  .imageWrapper {
+    @apply h-48 relative rounded-t-2xl;
+    /* overflow: visible is required so the icon can hang outside the div */
+    
+    .cardImg {
+      @apply w-full h-full object-cover rounded-t-2xl;
+    }
+
+    .iconCircle {
+      position: absolute;
+      bottom: -28px; /* This moves the icon halfway down into the white section */
+      left: 50%;
+      transform: translateX(-50%);
+      @apply w-14 h-14 bg-[#2ea000] rounded-xl flex items-center justify-center text-white shadow-xl z-10;
+      border: 4px solid #ffffff; /* Adds the clean white border seen in the image */
+    }
+  }
+
+  .cardContent {
+    @apply p-8 pt-12 text-center flex-grow;
+
+    h3 { @apply text-gray-900 text-xl font-bold mb-3; }
+    p { @apply text-gray-600 text-sm leading-relaxed; }
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .contactGrid { @apply gap-16; }
+}

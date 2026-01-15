@@ -1,0 +1,101 @@
+$primary-green: #2ea000;
+$dark-icon-bg: #1a1d23;
+$text-white: #ffffff;
+
+.metricsSection {
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+
+  .metricsCard {
+    background-color: $primary-green;
+    width: 100%;
+    max-width: 1200px;
+    border-radius: 24px;
+    padding: 60px;
+    color: $text-white;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+
+    @media (max-width: 768px) {
+      padding: 40px 20px;
+      border-radius: 16px;
+    }
+  }
+
+  .header {
+    margin-bottom: 50px;
+
+    .badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      opacity: 0.95;
+    }
+
+    .title {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      margin: 0;
+      letter-spacing: -0.5px;
+    }
+  }
+
+  .metricsGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+      gap: 35px;
+    }
+  }
+
+  .metricItem {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    .iconWrapper {
+      background-color: $dark-icon-bg;
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $text-white;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .content {
+      .value {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin: 0 0 4px 0;
+        // Ensures the number doesn't jump width while counting
+        display: inline-block;
+        min-width: 2ch; 
+      }
+
+      .label {
+        font-size: 0.9rem;
+        margin: 0;
+        opacity: 0.85;
+        line-height: 1.4;
+        font-weight: 500;
+      }
+    }
+  }
+}
