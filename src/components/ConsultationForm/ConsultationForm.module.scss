@@ -1,9 +1,13 @@
 @reference "../../app/globals.css";
 
 $primary-green: #2ea000;
+$bg-dark: #0b0d11;
+$card-dark: #161a22;
+$border-dark: #1a1f26;
 
 .consultSection {
-  @apply py-16 md:py-24 bg-white overflow-hidden;
+  @apply py-16 md:py-24 overflow-hidden;
+  background-color: $bg-dark;
 }
 
 .wrapper {
@@ -11,112 +15,83 @@ $primary-green: #2ea000;
 }
 
 .visualSide {
-  @apply flex justify-center items-center;
+  @apply flex justify-center items-center relative;
 
-  .imageContainer {
-    @apply w-full max-w-[550px];
+  .imageWrapper {
+    @apply relative w-full max-w-[500px] flex justify-center items-center;
+    
+    // This creates a soft green light behind your image
+    .glowEffect {
+      position: absolute;
+      width: 80%;
+      height: 80%;
+      background: radial-gradient(circle, rgba($primary-green, 0.15) 0%, transparent 70%);
+      z-index: 0;
+      pointer-events: none;
+    }
 
     .mainImage {
-      @apply w-full h-auto object-contain;
+      @apply w-full h-auto relative z-10;
+      /* FIX: Removes white background from image */
+      mix-blend-mode: multiply; 
+      /* Adds depth so the subject pops */
+      filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
     }
   }
 }
 
 .formSide {
-  @apply bg-[#f9fafb] p-7 md:p-12 rounded-[2rem] shadow-sm border border-gray-100;
+  @apply p-8 md:p-12 rounded-[2.5rem] border;
+  background-color: $card-dark;
+  border-color: $border-dark;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 
   .formHeader {
     @apply mb-8;
-
     .badge {
-      @apply flex items-center gap-2 text-xs font-bold tracking-[0.15em] text-gray-400 uppercase mb-3;
-      
-      .checkIcon {
-        color: $primary-green;
-        @apply text-sm;
-      }
+      @apply flex items-center gap-2 text-[10px] font-black tracking-[0.2em] uppercase mb-4;
+      color: #6b7280;
+      .checkIcon { color: $primary-green; }
     }
-
     .formTitle {
-      @apply text-3xl md:text-5xl font-extrabold text-[#1a1e26] leading-tight;
-      
-      span {
-        color: $primary-green;
-      }
+      @apply text-3xl md:text-5xl font-bold leading-tight text-white;
+      span { color: $primary-green; }
     }
   }
 }
 
 .form {
-  @apply space-y-4;
-
+  @apply space-y-5;
   .inputGroup {
     input, select {
-      @apply w-full px-6 py-4 bg-white border border-gray-200 rounded-xl outline-none transition-all duration-300;
-      @apply text-gray-700 font-medium placeholder:text-gray-400;
+      @apply w-full px-6 py-4 rounded-2xl outline-none transition-all duration-300 border;
+      background-color: #0b0d11;
+      border-color: $border-dark;
+      color: #fff;
 
       &:focus {
-        @apply border-[#2ea000]/50;
-        box-shadow: 0 0 0 4px rgba($primary-green, 0.08);
+        border-color: $primary-green;
+        background-color: rgba($primary-green, 0.05);
       }
     }
-
     select {
-      @apply appearance-none cursor-pointer;
+      @apply appearance-none;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%232ea000'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-position: right 1.5rem center;
-      background-size: 1.1em;
+      background-size: 1rem;
     }
   }
 
   .submitBtn {
-    @apply mt-6 flex items-center justify-center gap-2 w-full sm:w-max px-12 py-4 text-white font-bold rounded-full transition-all duration-300;
-    background-color: $primary-green;
-
-    &:hover {
-      @apply shadow-xl shadow-[#2ea000]/25 -translate-y-1;
-      filter: brightness(1.05);
-    }
-    
-    svg {
-      @apply text-xl;
-    }
+    @apply mt-4 w-full sm:w-auto px-10 py-4 bg-[#2ea000] text-white font-bold rounded-full 
+           flex items-center justify-center gap-3 transition-all duration-300 hover:scale-105;
+    box-shadow: 0 10px 20px rgba($primary-green, 0.2);
   }
 }
 
-/* Tablet & Mobile Responsiveness */
+/* Responsive Adjustments */
 @media (max-width: 1023px) {
-  .consultSection {
-    @apply py-12;
-  }
-
-  .wrapper {
-    @apply gap-14;
-  }
-
-  .visualSide {
-    @apply order-1; // Image stays on top for mobile/tablet
-    .imageContainer {
-      @apply max-w-[400px];
-    }
-  }
-
-  .formSide {
-    @apply order-2;
-  }
-}
-
-@media (max-width: 640px) {
-  .formSide {
-    @apply p-6 rounded-3xl;
-  }
-
-  .formTitle {
-    @apply text-3xl;
-  }
-
-  .submitBtn {
-    @apply w-full; // Button becomes full width on small phones
-  }
+  .visualSide { @apply order-1 mb-10; }
+  .formSide { @apply order-2; }
 }

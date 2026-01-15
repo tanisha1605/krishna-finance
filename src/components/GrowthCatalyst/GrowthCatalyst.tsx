@@ -13,7 +13,7 @@ const GrowthCatalyst: React.FC = () => {
     { id: 'kavach', title: 'KAVACH', icon: '🛡️', description: 'Legal protection through Shram Suvidha and trademark registration services.' },
     { id: 'pramanit', title: 'PRAMANIT', icon: '✅', description: 'Get certified with essential business, tax, and compliance certifications.' },
     { id: 'nidhi', title: 'NIDHI', icon: '💰', description: 'Access a variety of government grants, funds, and MSME support schemes.' },
-    { id: 'vikas', title: 'VIKAS', icon: '₹', description: 'Fuel your business growth with venture capital and government loan assistance.' },
+    { id: 'vikas', title: 'VIKAS', icon: '🛡️', description: 'Fuel your business growth with venture capital and government loan assistance.' },
     { id: 'vistar', title: 'VISTAR', icon: '📢', description: 'Build your brand with expert logo design, digital marketing, and web development.' },
   ];
 
@@ -51,17 +51,15 @@ const GrowthCatalyst: React.FC = () => {
             <motion.div 
               key={service.id}
               className={styles.serviceBox}
-              whileHover={{ backgroundColor: '#f9fff6', borderColor: '#2ea000', y: -5 }}
+              whileHover={{ backgroundColor: 'rgba(255, 255, 255, 0.02)', y: -5 }}
               onClick={() => router.push(`/services/${service.id}`)}
             >
-              {/* Wrapped content with flex-grow to push footer down */}
               <div className={styles.cardContent}>
                 <div className={styles.iconContainer}>{service.icon}</div>
                 <h3 className={styles.serviceName}>{service.title}</h3>
                 <p className={styles.serviceDesc}>{service.description}</p>
               </div>
 
-              {/* Pinned to bottom */}
               <div className={styles.viewDetails}>
                 View Details →
               </div>

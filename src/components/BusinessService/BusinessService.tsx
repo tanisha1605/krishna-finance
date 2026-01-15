@@ -1,28 +1,26 @@
+"use client";
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import styles from './BusinessService.module.scss';
 import Logo from '@/components/Images/Modal-Logo.png';
+import Image from 'next/image';
 
 const BusinessService: React.FC = () => {
   const services = [
-    { title: 'Business Incorporation & Registration', icon: '🤝' },
-    { title: 'Startup India & MSME Certification', icon: '📜' },
-    { title: 'Seed Funding & Loan Assistance', icon: '💰' },
-    { title: 'Business Growth Strategy', icon: '📈' },
+    { title: 'Business Incorporation', icon: '🤝' },
+    { title: 'MSME Certification', icon: '📜' },
+    { title: 'Funding Assistance', icon: '💰' },
+    { title: 'Growth Strategy', icon: '📈' },
   ];
 
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2 }
-    }
-  };
-
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1 }
+    hidden: { y: 15, opacity: 0 },
+    visible: { 
+      y: 0, 
+      opacity: 1,
+      transition: { duration: 0.4 } 
+    }
   };
 
   return (
@@ -31,35 +29,31 @@ const BusinessService: React.FC = () => {
         className={styles.container}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={containerVariants}
+        viewport={{ once: true, amount: 0.1 }}
       >
-        {/* Left Side: Visuals with Scale Animation */}
-        <motion.div 
-          className={styles.imageSide}
-          variants={itemVariants}
-        >
-          <img 
-            src={Logo.src} 
-            alt="Business Collaboration" 
-            className={styles.puzzleImage} 
+        {/* Visual Side */}
+        <motion.div className={styles.imageSide} variants={itemVariants}>
+          <Image 
+            src={Logo} 
+            alt="Krishna Finance" 
+            className={styles.puzzleImage}
+            priority
           />
         </motion.div>
 
-        {/* Right Side: Content */}
+        {/* Content Side */}
         <div className={styles.contentSide}>
           <motion.div className={styles.topNote} variants={itemVariants}>
             <span className={styles.checkIcon}>✓</span>
-            We are an Ahmedabad based consultancy
+            Consultancy Ahmedabad
           </motion.div>
 
           <motion.h2 className={styles.headline} variants={itemVariants}>
-            Committed to growth and <br />
-            essential <span className={styles.highlight}>business services</span>
+            Committed to <span className={styles.highlight}>Growth</span>
           </motion.h2>
 
           <motion.p className={styles.subtext} variants={itemVariants}>
-            From launching startups to scaling established businesses, we serve entrepreneurs at every stage.
+            Launching and scaling startups at every stage.
           </motion.p>
 
           <div className={styles.grid}>
@@ -68,11 +62,6 @@ const BusinessService: React.FC = () => {
                 key={index} 
                 className={styles.card}
                 variants={itemVariants}
-                whileHover={{ 
-                  scale: 1.05, 
-                  backgroundColor: "#f0fdf4",
-                  transition: { duration: 0.2 } 
-                }}
               >
                 <div className={styles.iconBox}>
                   <span>{service.icon}</span>

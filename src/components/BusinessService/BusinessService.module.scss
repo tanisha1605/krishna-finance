@@ -1,24 +1,35 @@
+@reference "../../app/globals.css";
+
 $primary-green: #2ea000;
-$text-main: #000000;
-$text-secondary: #6b7280;
+$bg-dark: #0b0d11;
+$card-dark: #161a22;
+$border-dark: #1a1f26;
+$text-white: #ffffff;
+$text-muted: #9ca3af;
 
 .sectionWrapper {
-  padding: 60px 20px;
-  background-color: #ffffff;
+  // Reduced mobile padding to remove bottom gap
+  padding: 40px 20px 20px 20px; 
+  background-color: $bg-dark;
   display: flex;
   justify-content: center;
   overflow: hidden;
+
+  @media (min-width: 1024px) {
+    padding: 80px 20px;
+  }
 
   .container {
     max-width: 1200px;
     width: 100%;
     display: flex;
-    flex-direction: column; // Mobile default: Stacked
+    flex-direction: column;
     align-items: center;
-    gap: 40px;
+    // Reduced gap between image and content side for mobile
+    gap: 20px; 
 
     @media (min-width: 1024px) {
-      flex-direction: row; // Desktop: Side-by-side
+      flex-direction: row;
       justify-content: space-between;
       gap: 60px;
     }
@@ -28,12 +39,16 @@ $text-secondary: #6b7280;
 .imageSide {
   flex: 1;
   width: 100%;
-  max-width: 500px;
+  max-width: 400px; // Slightly smaller max-width for cleaner mobile fit
+  display: flex;
+  justify-content: center;
 
   .puzzleImage {
     width: 100%;
     height: auto;
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.05));
+    object-fit: contain;
+    mix-blend-mode: screen; 
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
   }
 }
 
@@ -45,32 +60,34 @@ $text-secondary: #6b7280;
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 16px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: $text-muted;
+    text-transform: uppercase;
 
     .checkIcon {
       background-color: $primary-green;
       color: white;
-      width: 20px;
-      height: 20px;
+      width: 18px;
+      height: 18px;
       border-radius: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 10px;
+      font-size: 9px;
     }
   }
 
   .headline {
-    font-size: 28px;
+    font-size: 26px;
     line-height: 1.2;
     font-weight: 800;
-    margin-bottom: 20px;
-    color: $text-main;
+    margin-bottom: 12px;
+    color: $text-white;
 
     @media (min-width: 768px) {
-      font-size: 44px; // Tablet and Desktop Heading
+      font-size: 42px;
     }
 
     .highlight {
@@ -79,55 +96,56 @@ $text-secondary: #6b7280;
   }
 
   .subtext {
-    color: $text-secondary;
-    font-size: 16px;
-    line-height: 1.6;
-    margin-bottom: 32px;
+    color: $text-muted;
+    font-size: 14px;
+    line-height: 1.5;
+    // Reduced margin-bottom to move the grid/button closer
+    margin-bottom: 20px; 
   }
 }
 
 .grid {
   display: grid;
-  grid-template-columns: 1fr; // Mobile
-  gap: 16px;
+  grid-template-columns: 1fr;
+  gap: 12px;
 
   @media (min-width: 640px) {
-    grid-template-columns: repeat(2, 1fr); // Tablet & Desktop
-    gap: 24px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
 
   .card {
     display: flex;
     align-items: center;
-    gap: 16px;
-    padding: 12px;
+    gap: 12px;
+    padding: 14px;
     border-radius: 12px;
+    background-color: $card-dark;
+    border: 1px solid $border-dark;
     cursor: pointer;
-    border: 1px solid transparent;
-    transition: border-color 0.2s ease;
+    transition: all 0.3s ease;
 
     &:hover {
-      border-color: rgba($primary-green, 0.2);
+      border-color: rgba($primary-green, 0.4);
+      background-color: rgba($primary-green, 0.05);
     }
 
     .iconBox {
       background-color: $primary-green;
-      min-width: 50px;
-      height: 50px;
+      min-width: 44px;
+      height: 44px;
       border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      font-size: 20px;
-      box-shadow: 0 4px 10px rgba($primary-green, 0.2);
+      font-size: 18px;
     }
 
     .cardTitle {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
-      color: $text-main;
-      line-height: 1.4;
+      color: $text-white;
     }
   }
 }

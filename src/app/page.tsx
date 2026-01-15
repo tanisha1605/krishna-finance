@@ -5,7 +5,10 @@ import FundingOpportunities from "@/components/FundingOpportunities/FundingOppor
 import BusinessService from "@/components/BusinessService/BusinessService";
 import GrowthCatalyst from "@/components/GrowthCatalyst/GrowthCatalyst";
 import ConsultationForm from "@/components/ConsultationForm/ConsultationForm";
-import ExpertConnect from '@/components/ExpertConnect/ExpertConnect';
+import TestimonialSection from '@/components/TestimonialSection/TestimonialSection';
+import SuccessMetrics from '@/components/SuccessMetrics/SuccessMetrics';
+import BlogSection from '@/components/BlogSection/BlogSection';
+import Partners from "@/components/Partners/Partners";
 export default function Home() {  
   return (
     <motion.main
@@ -14,14 +17,14 @@ export default function Home() {
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <Hero />
+      <FundingOpportunities />
       <BusinessService />
       <GrowthCatalyst />
       <ConsultationForm />
-      {/* <ExpertConnect /> */}
-      {/* Note: Since FundingOpportunities already has its own 'whileInView' 
-          animations, this wrapper handles the initial page load entrance.
-      */}
-      <FundingOpportunities />
+      <TestimonialSection />
+      <SuccessMetrics />
+      <Partners />
+      <BlogSection />
     </motion.main>
   );
 }

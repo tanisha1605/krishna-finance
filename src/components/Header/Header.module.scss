@@ -4,86 +4,83 @@
   @apply fixed top-0 left-0 w-full z-[1000];
   background-color: #12161d;
   height: 80px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .navLink {
-  @apply text-white font-medium transition-colors duration-300 text-sm;
+  @apply text-white font-medium transition-colors duration-300 text-sm cursor-pointer;
   &:hover { color: #5ea000; }
 }
 
-/* DESKTOP DROPDOWN */
+/* DESKTOP MEGA MENU */
 .megaMenu {
-  position: fixed;
+  @apply fixed left-0 w-full bg-[#12161d] z-[1000];
   top: 80px;
-  left: 0;
-  width: 100vw;
-  background-color: #12161d;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-  z-index: 1000;
-  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 2.5rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.megaMenuGrid {
+  // 4 columns on desktop, adapts automatically
+  @apply max-w-[1440px] mx-auto px-8 grid grid-cols-4 gap-8;
 }
 
 .menuColumn {
-  h3 { color: #5ea000; font-weight: 700; font-size: 0.8rem; margin-bottom: 1rem; border-bottom: 1px solid #5ea00033; padding-bottom: 5px; }
-  ul li a { color: #ccc; font-size: 0.75rem; display: block; padding: 4px 0; &:hover { color: #5ea000; } }
+  h3 { 
+    @apply text-[#5ea000] font-bold text-xs mb-4 uppercase tracking-widest; 
+    border-bottom: 1px solid rgba(94, 160, 0, 0.2); 
+    padding-bottom: 8px;
+  }
+  ul li a { 
+    @apply text-gray-400 text-xs py-1.5 block transition-all;
+    &:hover { @apply text-white translate-x-1; } 
+  }
 }
 
-/* MOBILE SIDEBAR - DRAWER FROM RIGHT */
+.iconSpan { @apply mr-2 text-[#5ea000]; }
+
+/* RESPONSIVE SIDEBAR (Tablet & Mobile) */
 .mobileSidebar {
-  position: fixed;
-  top: 0;
-  right: -100%; /* Hidden by default */
-  width: 80%;
-  max-width: 400px;
-  height: 100vh;
-  background-color: #12161d;
-  z-index: 2000; /* Higher than header */
-  padding: 2rem 1.5rem;
-  transition: right 0.4s ease-in-out;
-  overflow-y: auto;
-  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
-
-  &.active {
-    right: 0; /* Slides in */
-  }
+  @apply fixed top-0 right-0 h-screen bg-[#12161d] z-[2000] shadow-2xl;
+  // Responsive Width: 85% on mobile, 50% on tablets
+  width: 85%;
+  @screen sm { width: 60%; }
+  @screen md { width: 45%; }
+  max-width: 450px;
 }
 
-.mobileNavLink {
-  @apply text-white text-lg font-semibold py-5 flex justify-between items-center w-full;
-  .arrow { transition: transform 0.3s ease; }
-  .rotate { transform: rotate(180deg); }
+.mobileMainLink {
+  @apply text-white text-2xl font-bold block transition-colors;
+  &:hover { color: #5ea000; }
 }
 
-/* MOBILE ACCORDION */
-.accordionContent {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
-  &.show {
-    max-height: 4000px; /* Big enough for all items */
-    padding-bottom: 2rem;
-  }
+.sidebarLabel {
+  @apply text-gray-500 text-[10px] font-black tracking-widest uppercase mb-6;
 }
 
-/* OVERLAY */
 .overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.75);
-  z-index: 1500;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(4px);
-}
-
-.overlayVisible {
-  opacity: 1;
-  visibility: visible;
+  @apply fixed inset-0 bg-black/80 z-[1500] backdrop-blur-sm;
 }
 
 .contactBtn {
-  @apply px-8 py-2 rounded-full text-white font-bold transition-all;
-  background-color: #5ea000;
-  &:hover { opacity: 0.9; }
+  @apply bg-[#5ea000] text-white font-bold px-8 py-3 rounded-full transition-all cursor-pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  
+  &:hover {
+    background-color: #4a8000;
+    @apply shadow-lg;
+  }
+}
+
+/* Scrollbar styling for sidebar */
+.mobileSidebar::-webkit-scrollbar {
+  width: 4px;
+}
+.mobileSidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
 }
