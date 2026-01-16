@@ -8,79 +8,266 @@
 }
 
 .navLink {
-  @apply text-white font-medium transition-colors duration-300 text-sm cursor-pointer;
+  @apply text-white font-medium transition-colors duration-300 text-sm cursor-pointer select-none;
   &:hover { color: #5ea000; }
 }
 
-/* DESKTOP MEGA MENU */
-.megaMenu {
-  @apply fixed left-0 w-full bg-[#12161d] z-[1000];
+/* --- DARK MEGA MENU STYLING --- */
+
+.megaMenuWrapper {
+  position: fixed;
   top: 80px;
-  padding: 2.5rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 999;
+  /* Adds a dim backdrop to focus attention on the menu */
+  background: rgba(0, 0, 0, 0.6); 
+  height: calc(100vh - 80px); /* Covers the rest of the screen */
+  align-items: flex-start; /* Aligns menu to top */
+  padding-top: 2rem;
 }
 
-.megaMenuGrid {
-  // 4 columns on desktop, adapts automatically
-  @apply max-w-[1440px] mx-auto px-8 grid grid-cols-4 gap-8;
+.megaMenuCard {
+  /* DARK THEME BACKGROUND */
+  @apply bg-[#1A1E26] rounded-xl shadow-2xl;
+  
+  width: 95%;
+  max-width: 1380px;
+  padding: 3rem 2rem;
+  
+  /* 7 Columns Grid Layout */
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); 
+  gap: 2rem;
+  
+  border-top: 4px solid #5ea000;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  
+  /* Scrollable if height exceeds screen */
+  max-height: 85vh;
+  overflow-y: auto;
 }
 
-.menuColumn {
-  h3 { 
-    @apply text-[#5ea000] font-bold text-xs mb-4 uppercase tracking-widest; 
-    border-bottom: 1px solid rgba(94, 160, 0, 0.2); 
-    padding-bottom: 8px;
+.columnTitle {
+  /* White Title for Dark Mode */
+  @apply text-white font-extrabold text-xs uppercase tracking-wider mb-5;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.8rem;
+}
+
+.columnList {
+  @apply flex flex-col space-y-3;
+}
+
+.menuItemLink {
+  @apply flex items-start text-[11px] font-medium text-gray-400 transition-all duration-200 cursor-pointer;
+  line-height: 1.5;
+
+  &:hover {
+    @apply text-[#5ea000];
+    transform: translateX(4px);
+    
+    .itemIcon {
+      @apply text-[#5ea000];
+    }
   }
-  ul li a { 
-    @apply text-gray-400 text-xs py-1.5 block transition-all;
-    &:hover { @apply text-white translate-x-1; } 
+}
+
+.itemIcon {
+  @apply text-gray-500 mr-2 text-[10px] mt-[3px]; 
+  transition: color 0.2s;
+}
+
+/* Scrollbar Styling for the Dark Menu */
+.megaMenuCard::-webkit-scrollbar {
+  width: 6px;
+}
+.megaMenuCard::-webkit-scrollbar-track {
+  background: #12161d;
+}
+.megaMenuCard::-webkit-scrollbar-thumb {
+  background-color: #333;
+  border-radius: 20px;
+}
+
+/* --- END MEGA MENU --- */
+
+.contactBtn {
+  @apply bg-[#5ea000] text-white font-bold px-8 py-3 rounded-full cursor-pointer shadow-lg;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background-color: #4a8000;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(94, 160, 0, 0.4);
   }
 }
 
-.iconSpan { @apply mr-2 text-[#5ea000]; }
-
-/* RESPONSIVE SIDEBAR (Tablet & Mobile) */
 .mobileSidebar {
   @apply fixed top-0 right-0 h-screen bg-[#12161d] z-[2000] shadow-2xl;
-  // Responsive Width: 85% on mobile, 50% on tablets
   width: 85%;
-  @screen sm { width: 60%; }
-  @screen md { width: 45%; }
-  max-width: 450px;
+  max-width: 400px;
 }
 
 .mobileMainLink {
-  @apply text-white text-2xl font-bold block transition-colors;
+  @apply text-white text-xl font-bold mb-4 block cursor-pointer transition-colors;
   &:hover { color: #5ea000; }
 }
 
 .sidebarLabel {
-  @apply text-gray-500 text-[10px] font-black tracking-widest uppercase mb-6;
+  @apply text-[#5ea000] text-[10px] font-black tracking-[0.2em] uppercase mt-6 mb-4 opacity-80;
 }
 
 .overlay {
-  @apply fixed inset-0 bg-black/80 z-[1500] backdrop-blur-sm;
+  @apply fixed inset-0 bg-black/80 backdrop-blur-sm z-[1500] cursor-pointer;
 }
 
-.contactBtn {
-  @apply bg-[#5ea000] text-white font-bold px-8 py-3 rounded-full transition-all cursor-pointer;
+/* Responsive adjustment for laptops */
+@media (max-width: 1280px) {
+  .megaMenuCard {
+    grid-template-columns: repeat(4, 1fr); /* Collapse to 4 columns */
+    padding: 2rem;
+  }
+}@reference "../../app/globals.css";
+
+.navContainer {
+  @apply fixed top-0 left-0 w-full z-[1000];
+  background-color: #12161d;
+  height: 80px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.navLink {
+  @apply text-white font-medium transition-colors duration-300 text-sm cursor-pointer select-none;
+  &:hover { color: #5ea000; }
+}
+
+/* --- DARK MEGA MENU STYLING --- */
+
+.megaMenuWrapper {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  border: none;
+  z-index: 999;
+  /* Adds a dim backdrop to focus attention on the menu */
+  background: rgba(0, 0, 0, 0.6); 
+  height: calc(100vh - 80px); /* Covers the rest of the screen */
+  align-items: flex-start; /* Aligns menu to top */
+  padding-top: 2rem;
+}
+
+.megaMenuCard {
+  /* DARK THEME BACKGROUND */
+  @apply bg-[#1A1E26] rounded-xl shadow-2xl;
   
+  width: 95%;
+  max-width: 1380px;
+  padding: 3rem 2rem;
+  
+  /* 7 Columns Grid Layout */
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); 
+  gap: 2rem;
+  
+  border-top: 4px solid #5ea000;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  
+  /* Scrollable if height exceeds screen */
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+.columnTitle {
+  /* White Title for Dark Mode */
+  @apply text-white font-extrabold text-xs uppercase tracking-wider mb-5;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.8rem;
+}
+
+.columnList {
+  @apply flex flex-col space-y-3;
+}
+
+.menuItemLink {
+  @apply flex items-start text-[11px] font-medium text-gray-400 transition-all duration-200 cursor-pointer;
+  line-height: 1.5;
+
   &:hover {
-    background-color: #4a8000;
-    @apply shadow-lg;
+    @apply text-[#5ea000];
+    transform: translateX(4px);
+    
+    .itemIcon {
+      @apply text-[#5ea000];
+    }
   }
 }
 
-/* Scrollbar styling for sidebar */
-.mobileSidebar::-webkit-scrollbar {
-  width: 4px;
+.itemIcon {
+  @apply text-gray-500 mr-2 text-[10px] mt-[3px]; 
+  transition: color 0.2s;
 }
-.mobileSidebar::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
+
+/* Scrollbar Styling for the Dark Menu */
+.megaMenuCard::-webkit-scrollbar {
+  width: 6px;
+}
+.megaMenuCard::-webkit-scrollbar-track {
+  background: #12161d;
+}
+.megaMenuCard::-webkit-scrollbar-thumb {
+  background-color: #333;
+  border-radius: 20px;
+}
+
+/* --- END MEGA MENU --- */
+
+.contactBtn {
+  @apply bg-[#5ea000] text-white font-bold px-8 py-3 rounded-full cursor-pointer shadow-lg;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background-color: #4a8000;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(94, 160, 0, 0.4);
+  }
+}
+
+.mobileSidebar {
+  @apply fixed top-0 right-0 h-screen bg-[#12161d] z-[2000] shadow-2xl;
+  width: 85%;
+  max-width: 400px;
+}
+
+.mobileMainLink {
+  @apply text-white text-xl font-bold mb-4 block cursor-pointer transition-colors;
+  &:hover { color: #5ea000; }
+}
+
+.sidebarLabel {
+  @apply text-[#5ea000] text-[10px] font-black tracking-[0.2em] uppercase mt-6 mb-4 opacity-80;
+}
+
+.overlay {
+  @apply fixed inset-0 bg-black/80 backdrop-blur-sm z-[1500] cursor-pointer;
+}
+
+/* Responsive adjustment for laptops */
+@media (max-width: 1280px) {
+  .megaMenuCard {
+    grid-template-columns: repeat(4, 1fr); /* Collapse to 4 columns */
+    padding: 2rem;
+  }
 }
