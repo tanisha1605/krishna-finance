@@ -1,0 +1,241 @@
+/* FIXED PATH: Points correctly to src/app/globals.css */
+@reference "../../globals.css";
+
+// Variables matching your theme
+$bg-dark: #12161d;
+$bg-card: #1a1e26;
+$primary-green: #2ea000;
+$text-white: #ffffff;
+$text-gray: #9ca3af;
+$border-color: rgba(255, 255, 255, 0.1);
+
+.pageWrapper {
+  background-color: $bg-dark;
+  @apply min-h-screen;
+  color: $text-white;
+  padding-top: 100px; /* Space for fixed header */
+  padding-bottom: 60px;
+}
+
+/* --- MAIN ARTICLE --- */
+.articleContainer {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @media (min-width: 768px) {
+    padding: 0 40px;
+  }
+}
+
+.breadcrumb {
+  margin-bottom: 2rem;
+  .backLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: $primary-green;
+    font-weight: 600;
+    font-size: 14px;
+    transition: opacity 0.2s;
+    
+    &:hover { opacity: 0.8; }
+  }
+}
+
+.articleHeader {
+  margin-bottom: 2rem;
+  
+  .title {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: $text-white;
+
+    @media (min-width: 768px) {
+      font-size: 2.8rem;
+    }
+  }
+
+  .metaData {
+    display: flex;
+    gap: 20px;
+    color: $text-gray;
+    font-size: 13px;
+    flex-wrap: wrap;
+
+    span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+  }
+}
+
+.imageWrapper {
+  width: 100%;
+  height: 250px;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 3rem;
+
+  @media (min-width: 768px) {
+    height: 450px;
+  }
+
+  .featureImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+/* --- CONTENT BODY --- */
+.contentBody {
+  .introText {
+    font-size: 1.1rem;
+    color: $text-gray;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .contentSection {
+    margin-bottom: 2.5rem;
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: $text-white;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #d1d5db; /* Lighter gray for reading */
+      line-height: 1.7;
+    }
+  }
+
+  .conclusion {
+    background: $bg-card;
+    padding: 2rem;
+    border-radius: 12px;
+    border-left: 4px solid $primary-green;
+    margin-top: 3rem;
+
+    h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: $text-white;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: $text-gray;
+      line-height: 1.6;
+    }
+  }
+}
+
+/* --- RELATED BLOGS SECTION --- */
+.relatedSection {
+  margin-top: 6rem;
+  border-top: 1px solid $border-color;
+  padding-top: 4rem;
+}
+
+.relatedContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.relatedTitle {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  color: $text-white;
+  text-align: center;
+  
+  @media (min-width: 768px) {
+    text-align: left;
+  }
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+
+  /* Tablet */
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Desktop */
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.relatedCard {
+  background-color: $bg-card;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid transparent;
+
+  &:hover {
+    transform: translateY(-5px);
+    border-color: rgba($primary-green, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .cardImage {
+    height: 200px;
+    width: 100%;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .cardContent {
+    padding: 1.5rem;
+
+    h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: $text-white;
+      line-height: 1.4;
+    }
+
+    .cardDate {
+      display: block;
+      font-size: 0.85rem;
+      color: $text-gray;
+      margin-bottom: 1.5rem;
+    }
+
+    .readMoreBtn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: $primary-green;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: gap 0.2s ease;
+
+      &:hover {
+        gap: 10px;
+        text-decoration: underline;
+      }
+    }
+  }
+}

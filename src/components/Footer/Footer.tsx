@@ -13,25 +13,27 @@ import Logo from '@/components/Images/Krishna-Finance-Logo.png';
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  // Animation variants for staggered entrance of columns
+  // Define links with their exact paths
+  const quickLinks = [
+    { text: 'Home', path: '/' },
+    { text: 'About Us', path: '/about' },
+    { text: 'Services', path: '/services' }, // Or link to a specific service if needed
+    { text: 'Life@KrishnaFinance', path: '/life-at-krishna' }, // Update if you have this page
+    { text: 'Blog', path: '/blog' },
+    { text: 'Contact Us', path: '/contactus' }
+  ];
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1, // Delay between each column
-      }
+      transition: { staggerChildren: 0.1 }
     }
   };
 
-  // Animation variants for individual text elements/rows
   const textVariants = {
     hidden: { opacity: 0, x: -10 },
-    visible: { 
-      opacity: 1, 
-      x: 0,
-      transition: { duration: 0.5 } 
-    }
+    visible: { opacity: 1, x: 0, transition: { duration: 0.5 } }
   };
 
   const itemVariants = {
@@ -49,10 +51,8 @@ const Footer = () => {
       >
         
         {/* Main Content Grid */}
-        <motion.div 
-          className={styles.mainGrid}
-          variants={containerVariants}
-        >
+        <motion.div className={styles.mainGrid} variants={containerVariants}>
+          
           {/* Column 1: Logo & Socials */}
           <motion.div variants={itemVariants} className={styles.brandCol}>
             <Image src={Logo} alt="Logo" width={180} height={45} className="object-contain mb-4" />
@@ -108,13 +108,13 @@ const Footer = () => {
             </div>
           </motion.div>
 
-          {/* Column 4: Quick Links */}
+          {/* Column 4: Quick Links (UPDATED) */}
           <motion.div variants={itemVariants} className={styles.infoCol}>
             <motion.h3 variants={textVariants}>Quick links</motion.h3>
             <nav className={styles.quickLinks}>
-              {['Home', 'About Us', 'Services', 'Life@KrishnaFinance', 'Blog', 'Contact Us'].map((text, i) => (
-                <motion.div key={text} variants={textVariants}>
-                  <Link href="/">{text}</Link>
+              {quickLinks.map((link, i) => (
+                <motion.div key={link.text} variants={textVariants}>
+                  <Link href={link.path}>{link.text}</Link>
                 </motion.div>
               ))}
             </nav>
@@ -122,10 +122,7 @@ const Footer = () => {
         </motion.div>
 
         {/* Disclaimer Box */}
-        <motion.div 
-          className={styles.disclaimerBox}
-          variants={itemVariants}
-        >
+        <motion.div className={styles.disclaimerBox} variants={itemVariants}>
           <motion.p variants={textVariants}>
             <span>Disclaimer:</span> We provide consultancy services in areas such as pitch deck preparation, financial reporting, business incorporation...
           </motion.p>
@@ -135,12 +132,9 @@ const Footer = () => {
         </motion.div>
 
         {/* Bottom Bar */}
-        <motion.div 
-          className={styles.bottomBar}
-          variants={itemVariants}
-        >
+        <motion.div className={styles.bottomBar} variants={itemVariants}>
           <motion.p variants={textVariants}>
-            © 2025 Krishna Finance, Designed By SEULUXE
+            © {currentYear} Krishna Finance, Designed By SEULUXE
           </motion.p>
           <motion.div variants={textVariants} className={styles.legalLinks}>
             <Link href="/terms">Terms & Conditions</Link>

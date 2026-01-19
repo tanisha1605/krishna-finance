@@ -1,0 +1,65 @@
+/* FIXED PATH: Points correctly to src/app/globals.css */
+@reference "../../globals.css";
+
+.pageWrapper {
+  @apply bg-[#12161d] min-h-screen text-white pt-32 pb-20 px-4;
+}
+
+.container {
+  @apply max-w-5xl mx-auto;
+}
+
+.breadcrumb {
+  @apply flex items-center gap-3 text-sm text-gray-400 mb-12;
+  .backLink {
+    @apply flex items-center gap-2 hover:text-[#2ea000] transition-colors;
+  }
+  .current {
+    @apply text-[#2ea000] font-semibold;
+  }
+}
+
+.header {
+  @apply text-center mb-16;
+  
+  .iconCircle {
+    @apply w-20 h-20 bg-[#2ea000]/10 text-[#2ea000] rounded-full flex items-center justify-center text-3xl mx-auto mb-6;
+    border: 1px solid rgba(46, 160, 0, 0.3);
+  }
+
+  .title {
+    @apply text-3xl md:text-5xl font-bold mb-6;
+  }
+
+  .description {
+    @apply text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed;
+  }
+}
+
+.featuresGrid {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-20;
+}
+
+.featureCard {
+  @apply bg-[#1a1e26] p-6 rounded-xl border border-white/5 flex items-center gap-4;
+  
+  .checkIcon {
+    @apply text-[#2ea000] w-6 h-6 flex-shrink-0;
+  }
+  
+  span {
+    @apply text-lg font-medium text-gray-200;
+  }
+}
+
+.ctaSection {
+  @apply bg-gradient-to-r from-[#1a1e26] to-[#12161d] border border-[#2ea000]/30 rounded-2xl p-10 text-center;
+  
+  h2 {
+    @apply text-2xl font-bold mb-8;
+  }
+
+  .ctaBtn {
+    @apply inline-block bg-[#2ea000] text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-[#258000] transition-all hover:-translate-y-1 shadow-lg shadow-[#2ea000]/20;
+  }
+}
