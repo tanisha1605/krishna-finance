@@ -3,172 +3,188 @@ $bg-dark: #0b0d11;
 $card-bg: #0b0d11;
 $text-bright: #ffffff; 
 $text-muted: #9ca3af; 
-$border-invisible: #1a1f26;
+$border-color: #1a1f26;
 
 .mainWrapper {
-  padding: 60px 5%; // Reduced top padding for mobile
+  width: 100%;
   background-color: $bg-dark;
+  padding: 50px 20px; /* Reduced side padding for mobile */
   display: flex;
   justify-content: center;
-  overflow: visible;
+  overflow-x: hidden; /* Prevents horizontal scrollbar */
 
-  @media (min-width: 1024px) {
-    padding: 80px 5%;
+  @media (min-width: 768px) {
+    padding: 70px 40px;
+  }
+
+  @media (min-width: 1280px) {
+    padding: 100px 5%;
   }
 }
 
 .contentContainer {
-  max-width: 1200px;
   width: 100%;
+  max-width: 1280px;
   display: flex;
-  flex-direction: column; 
-  gap: 30px; // Tight gap for mobile stacking
+  flex-direction: column; /* Stack by default (Mobile/Tablet) */
+  gap: 50px;
 
+  /* Only go side-by-side on large screens */
   @media (min-width: 1024px) {
-    flex-direction: row; 
+    flex-direction: row;
     align-items: flex-start;
-    gap: 60px; // Wider gap for desktop side-by-side
+    gap: 60px;
   }
 }
 
+/* --- LEFT SIDE: INTRO --- */
 .introSide {
-  flex: 1;
-  
+  width: 100%;
+  position: relative; /* Default state */
+
   @media (min-width: 1024px) {
+    flex: 1;
     position: sticky;
-    top: 100px;
+    top: 120px; /* Sticks only on desktop */
+    height: fit-content;
   }
 
   .tagline {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 8px;
-    font-size: 14px;
+    gap: 10px;
+    font-size: 13px;
     font-weight: 700;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     color: $text-muted;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px 12px;
+    border-radius: 20px;
 
     .iconCheck {
-      background-color: $primary-green;
-      color: white;
-      width: 20px;
-      height: 20px;
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
+      color: $primary-green;
+      font-weight: 900;
     }
   }
 
   .mainTitle {
-    font-size: clamp(2rem, 8vw, 3rem);
-    line-height: 1.1;
+    font-size: clamp(2rem, 5vw, 3.2rem); /* Responsive Font Size */
+    line-height: 1.15;
     font-weight: 800;
-    margin-bottom: 20px; // Reduced from 25px
+    margin-bottom: 25px;
     color: $text-bright;
 
     .accentText {
       color: $primary-green;
-      display: block;
+      display: block; /* Puts accent on new line for impact */
     }
   }
 
   .ctaButton {
     background-color: $primary-green;
     color: white;
-    padding: 14px 30px;
+    padding: 16px 32px;
     border-radius: 50px;
     border: none;
+    font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: transform 0.2s ease, filter 0.2s ease;
-    margin-bottom: 10px; // Extra buffer before grid starts on mobile
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 
     &:hover {
+      background-color: darken($primary-green, 5%);
       transform: translateY(-2px);
-      filter: brightness(1.1);
+      box-shadow: 0 10px 20px rgba(46, 160, 0, 0.2);
     }
   }
 }
 
+/* --- RIGHT SIDE: GRID --- */
 .servicesGrid {
-  flex: 1.7;
+  width: 100%;
   display: grid;
-  grid-template-columns: 1fr;
-  border: 1px solid $border-invisible;
-  border-radius: 20px;
+  grid-template-columns: 1fr; /* 1 Column Mobile */
   background: $card-bg;
+  border-radius: 24px;
+  border: 1px solid $border-color;
   overflow: hidden;
 
+  @media (min-width: 1024px) {
+    flex: 1.5; /* Takes more space on desktop */
+  }
+
+  /* Tablet & Up: 2 Columns */
   @media (min-width: 640px) {
     grid-template-columns: repeat(2, 1fr);
   }
 
   .serviceBox {
-    padding: 30px 25px; // Slightly more compact padding for mobile
-    border: 1px solid $border-invisible;
+    padding: 30px;
+    border: 1px solid $border-color;
+    /* Negative margins to merge borders cleanly */
+    margin: -1px 0 0 -1px; 
+    
     display: flex;
-    flex-direction: column; 
-    min-height: 250px;
+    flex-direction: column;
+    min-height: 240px;
     cursor: pointer;
     transition: all 0.3s ease;
-
-    @media (min-width: 1024px) {
-        padding: 40px 30px;
-        min-height: 280px;
-    }
+    background: transparent;
 
     .cardContent {
       flex-grow: 1;
 
       .iconContainer {
-        background-color: rgba(255, 255, 255, 0.03); 
-        width: 48px;
-        height: 48px;
+        width: 50px;
+        height: 50px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
         border-radius: 12px;
         display: flex;
         align-items: center;
         justify-content: center;
+        font-size: 24px;
         margin-bottom: 20px;
-        font-size: 22px;
-        border: 1px solid $border-invisible;
       }
 
       .serviceName {
         font-size: 18px;
-        font-weight: 800;
-        margin-bottom: 10px;
+        font-weight: 700;
         color: $text-bright;
+        margin-bottom: 12px;
         letter-spacing: 0.5px;
       }
 
       .serviceDesc {
         font-size: 14px;
-        line-height: 1.5;
+        line-height: 1.6;
         color: $text-muted;
-        margin-bottom: 20px;
+        margin-bottom: 24px;
       }
     }
 
     .viewDetails {
-      margin-top: auto;
       font-size: 13px;
       font-weight: 700;
       color: $primary-green;
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
       transition: gap 0.2s ease;
-
-      &:hover {
-        gap: 10px;
-      }
+      margin-top: auto;
     }
 
     &:hover {
-      border-color: rgba($primary-green, 0.4);
-      z-index: 1; 
+      background: rgba(255, 255, 255, 0.02);
+      z-index: 2; /* Brings border on top */
+      border-color: rgba($primary-green, 0.3);
+      
+      .viewDetails {
+        gap: 12px;
+      }
     }
   }
 }

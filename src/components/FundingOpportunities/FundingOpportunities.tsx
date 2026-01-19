@@ -46,15 +46,21 @@ const FundingOpportunities = () => {
           <h2 className={styles.mainTitle}>For Every Stage of <span>Your Startup</span></h2>
         </motion.div>
 
-        {/* Responsive Grid */}
-        <div className={styles.cardsGrid}>
+        {/* UPDATED: The animation is now on the wrapper (cardsGrid).
+           All cards will appear together as one block.
+        */}
+        <motion.div 
+          className={styles.cardsGrid}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }} // Smooth simultaneous transition
+        >
           {fundingData.map((item, index) => (
-            <motion.div 
+            // Changed to standard div because animation is handled by parent
+            // Hover effects are handled by CSS in your SCSS file
+            <div 
               key={index}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
               className={styles.card}
               onClick={() => {
                 setSelectedService(item.title);
@@ -75,9 +81,9 @@ const FundingOpportunities = () => {
                   ))}
                 </ul>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       {/* --- FORM MODAL --- */}
@@ -94,9 +100,10 @@ const FundingOpportunities = () => {
             <div className={styles.modalContainer}>
               <motion.div 
                 className={styles.modalContent}
-                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                transition={{ duration: 0.3 }}
               >
                 <button className={styles.closeBtn} onClick={() => setIsModalOpen(false)}><HiX /></button>
                 <div className={styles.modalHeader}>
