@@ -1,0 +1,157 @@
+$primary-green: #5ea000;
+$dark-bg: #000000;
+$card-bg: #0f0f0f;
+$text-light: #e0e0e0;
+$text-muted: #888888;
+
+.pageContainer {
+  background-color: $dark-bg;
+  min-height: 100vh;
+  color: $text-light;
+  padding-bottom: 5rem;
+}
+
+.heroSection {
+  padding: 8rem 0 4rem;
+  background: radial-gradient(circle at center, rgba($primary-green, 0.1) 0%, transparent 70%);
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  
+  .highlight {
+    color: $primary-green;
+  }
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: $text-muted;
+  max-width: 650px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.jobsSection {
+  padding: 4rem 0;
+}
+
+.sectionHeader {
+  margin-bottom: 3rem;
+  
+  h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.divider {
+  height: 3px;
+  width: 60px;
+  background-color: $primary-green;
+  border-radius: 2px;
+}
+
+.jobList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.jobCard {
+  background-color: $card-bg;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-left: 4px solid transparent;
+  border-radius: 8px;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-left-color: $primary-green;
+    background-color: #141414;
+    transform: translateX(5px);
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+}
+
+.jobInfo {
+  h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #ffffff;
+  }
+}
+
+.jobMeta {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: $text-muted;
+}
+
+.metaIcon {
+  color: $primary-green;
+}
+
+.applyBtn {
+  background-color: transparent;
+  color: $primary-green;
+  border: 1px solid $primary-green;
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $primary-green;
+    color: #ffffff;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.generalApplication {
+  margin-top: 4rem;
+  text-align: center;
+  padding: 3rem;
+  background-color: rgba($primary-green, 0.05);
+  border-radius: 8px;
+  border: 1px dashed rgba($primary-green, 0.3);
+
+  p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+}
+
+.textLink {
+  color: $primary-green;
+  font-weight: 600;
+  transition: color 0.2s;
+
+  &:hover {
+    color: lighten($primary-green, 15%);
+  }
+}
