@@ -1,66 +1,48 @@
-$primary-green: #5ea000;
-$dark-bg: #000000;
-$card-bg: #0a0a0a;
+@reference "../../app/globals.css";
 
 .pageContainer {
-  background-color: $dark-bg;
-  min-height: 100vh;
-  color: #ffffff;
-  padding-bottom: 5rem;
+  @apply bg-[#12161d] min-h-screen text-white pt-24;
 }
 
 .heroSection {
-  padding: 8rem 0 4rem;
-  background: linear-gradient(to bottom, rgba($primary-green, 0.05), transparent);
-}
-
-.title {
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  
-  .highlight {
-    color: $primary-green;
+  @apply py-16 border-b border-white/5;
+  .title {
+    @apply text-4xl md:text-6xl font-bold mb-6;
+    .highlight { @apply text-[#2ea000]; }
   }
-}
-
-.subtitle {
-  font-size: 1.2rem;
-  color: #a0a0a0;
-  max-width: 600px;
-  margin: 0 auto;
-  line-height: 1.6;
+  .subtitle { @apply text-gray-400 max-w-2xl mx-auto text-lg; }
 }
 
 .gallerySection {
-  padding: 4rem 0;
+  @apply py-20;
 }
 
 .gridContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
 }
 
 .imageCard {
-  background-color: $card-bg;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  overflow: hidden;
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  @apply relative rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 bg-[#1a1e26] border border-white/5;
+  aspect-ratio: 4/3;
 
   &:hover {
-    transform: translateY(-5px);
-    border-color: rgba($primary-green, 0.5);
+    @apply border-[#2ea000]/50;
+    .actualImage { @apply scale-110 opacity-60; }
+    .overlay { @apply opacity-100; }
   }
 }
 
-.imagePlaceholder {
-  height: 250px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #111111;
-  color: #555555;
-  font-weight: 500;
+.imageWrapper {
+  @apply relative w-full h-full;
+  
+  .actualImage {
+    @apply transition-all duration-700 object-cover;
+  }
+}
+
+.overlay {
+  @apply absolute inset-0 bg-[#2ea000]/20 opacity-0 transition-opacity duration-300 flex items-center justify-center;
+  .overlayText {
+    @apply bg-[#2ea000] text-white px-6 py-2 rounded-full font-bold text-sm shadow-lg;
+  }
 }
